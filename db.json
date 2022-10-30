@@ -1,0 +1,45 @@
+{
+    "users": [
+        {
+            "id": 1, 
+            "name": "harry",
+            "email": "harry@gmail.com",
+            "password": "harry12345",
+            "job": "Web Developer",
+            "role": "job seeker",
+            "skils": ["PHP", "Javascript", "HTML"]
+        },
+        {
+            "id": 2, 
+            "name": "Liam",
+            "email": "liam@gmail.com",
+            "password": "liam12345",
+            "job": "Web Developer",
+            "role": "job seeker",
+            "skils": ["PHP", "Javascript", "HTML"]
+        }
+    ],
+
+    "recruiter": [
+        {
+            "id": 1,
+            "name": "Danny",
+            "email": "danny@gmail.com",
+            "company": "PT. Maju Sejahtera",
+            "position": "wing back",
+            "phone": "08978345212",
+            "password": "danny12345",
+            "role": "recruiter"
+        },
+        {
+            "id": 2,
+            "name": "James",
+            "email": "james@gmail.com",
+            "company": "PT. Membangun Negeri",
+            "position": "center back",
+            "phone": "08978345542",
+            "password": "james12345",
+            "role": "recruiter"   
+        }
+    ]
+}

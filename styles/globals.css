@@ -1,5 +1,17 @@
+:root{
+  --purple: #5E50A1;
+  --yellow: #FBB017;
+  --dark-black: #1F2A36;
+  --light-black: #46505C;
+  --dark-grey: #9EA0A5;
+  --light-grey: #E2E5ED;
+  --white: #FFFFFF;
+  --dark-white: #F6F7F8;
+}
+
 html,
 body {
+  overflow-x: hidden;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,

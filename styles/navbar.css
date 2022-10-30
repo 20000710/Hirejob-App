@@ -1,0 +1,95 @@
+.navbar-home,
+.navbar-profile{
+    height: 100px;
+}
+
+.logo-purple{
+    width: 127px !important;
+}
+
+.navbar-profile .navbar-menu{
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.navbar-home ul.navbar-menu{
+    width: 100%;
+    justify-content: space-between;
+}
+
+.auth-btn{
+    display: flex;
+    align-items: center;
+    margin-right: 4.375rem;
+}
+
+.auth-btn .btn-login,
+.auth-btn .btn-login:hover{
+    background-color: var(--white);
+    border-color: var(--purple);
+    color: var(--purple);
+}   
+
+.auth-btn .btn-signup,
+.auth-btn .btn-signup:hover{
+    border-color: var(--purple);
+    background-color: var(--purple);
+    color: var(--white);
+}
+
+.profile-menu a.menu-icon:not(:last-child){
+    margin-right: 2.625rem;
+}
+
+.profile-menu button.menu-icon{
+    border: 0;
+    background-color: #fff;
+}
+
+.navbar-menu a.home-menu{
+    font-weight: 600;
+    font-size: 18px;
+    margin-left: 7.5rem;
+    margin-right: 40rem;
+    color: #1F2A36;
+}
+
+.navbar-menu ul.dropdown-menu{
+    left: auto;
+    right: 0;
+    top: 70px;
+}
+
+@media screen and (max-width: 992px){
+    .auth-btn{
+        margin-right: 0;
+    }
+
+    .navbar-home .navbar-collapse,
+    .navbar-profile .navbar-collapse{
+        z-index: 1;
+        background-color: #fff;
+    }
+
+    .navbar-home ul.navbar-menu{
+        align-items: flex-start;
+    }
+
+    .auth-btn .nav-link{
+        padding: 0rem;
+    }
+
+    .home-banner{
+        margin-top: 4rem;
+    }
+
+    .navbar-profile .profile-menu{
+        z-index: 1;
+    }
+
+    .navbar-menu a.home-menu{
+        margin: 0;
+        padding-bottom: 1rem;
+    }
+}
