@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import Footer from '../../../components/footer/footer';
-import MainHome from '../../../components/main-home/mainHome';
+// import Footer from '../../../components/footer/footer';
+// import MainHome from '../../../components/main-home/mainHome';
 import NavbarProfile from '../../../components/navbar/navbarProfile';
 
 export async function getStaticProps() {

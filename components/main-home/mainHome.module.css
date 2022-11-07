@@ -1,0 +1,10 @@
+.btn-sort{
+    background-color: #fff;
+    color: var(--light-black);
+    border: none;
+    margin-right: 0.5rem;
+}
+
+.menu-sort{
+    padding: 1rem;
+}

@@ -3,12 +3,29 @@ import React, { useState } from 'react'
 import mapPin from '../../assets/img/map-pin.svg'
 import Link from 'next/link'
 import userPhoto from '../../assets/img/user_default.png'
-// import { useEffect } from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { getDetailSkill } from '../../config/redux/actions/skillAction'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllWorkers } from '../../config/redux/actions/profileActions'
 
-const HomeCard = ({ workers, allSkills }) => {
-    console.log('user-skills: ', allSkills);
+const HomeCard = ({ handleSearch, allWorkers, token }) => {
+    const dispatch = useDispatch()
+    const [urlImg, setUrlImg] = useState("")
+    const [workerList, setWorkerList] = useState([])
+    const [skill, setSkill] = useState([])
+    console.log('allSkills: ', skill);
+    const { workers } = useSelector(state => state.profile)
+    console.log('workers-search: ', workers);
+
+    useEffect(() => {
+        const url_image = process.env.URL_IMG
+        setUrlImg((url_image))
+        allWorkers.map(val => {
+            const split = val.skills?.split(',')
+            setSkill(split)
+        })
+        dispatch(getAllWorkers(token))
+        handleSearch
+    }, [])
     return (
         <>
             <style jsx>{`
@@ -114,12 +131,13 @@ const HomeCard = ({ workers, allSkills }) => {
                                     height={120}
                                     className="img-fluid img-profile"
                                     src={
-                                        res.photo == undefined || res.photo == "null" ?
+                                        res.photo_worker == undefined || res.photo_worker == "null" ?
                                             userPhoto :
-                                            process.env.API_BACKEND + "/" + res.photo
+                                            urlImg + "/" + res.photo_worker
                                     }
                                     alt="card image"
-                                    style={{ borderRadius: "50%" }} /></p>
+                                    style={{ borderRadius: "50%" }} />
+                            </p>
                             <div className="d-flex justify-content-between align-items-center content-wrapper">
                                 <div className="d-flex flex-column card-desc">
                                     <h4 className="card-title">{res.name}</h4>
@@ -127,7 +145,7 @@ const HomeCard = ({ workers, allSkills }) => {
                                     <div className="d-flex align-items-center">
                                         <Image className="map-pin" src={mapPin} alt="map pin icon" width={16} height={16} />
                                         <div className="location-name">
-                                            {res.domicile == "" ? (
+                                            {res.domicile == "" || res.domicile == null ? (
                                                 <p>Location not set</p>
                                             ) : (
                                                 <p>{res.domicile}</p>
@@ -136,14 +154,17 @@ const HomeCard = ({ workers, allSkills }) => {
                                         </div>
                                     </div>
                                     <div className="d-flex">
-                                        {allSkills?.map((res, index) => (
-                                            <div className="skill-tag" key={index}>{res}</div>
-                                        ))
+                                        {skill !== null ?
+                                            <p>-</p> :
+
+                                            skill.map((res, index) => (
+                                                <div className="skill-tag" key={index}>{res[index]}</div>
+                                            ))
                                         }
                                     </div>
                                 </div>
                                 <div className="button-profile">
-                                    <Link href="/profile">
+                                    <Link href={`/profile/${res.id}`}>
                                         <a className="btn btn-primary">Lihat Profile</a>
                                     </Link>
                                 </div>

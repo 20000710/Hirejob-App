@@ -1,0 +1,126 @@
+.form-wrapper{
+    width: 753px;
+    z-index: 1;
+    margin-top: 4.375rem;
+}
+
+.form-wrapper form{
+    background-color: var(--white);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+}
+
+.form-title{
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--dark-black);
+}
+
+.data-diri{
+    width: 753px;
+    height: 731px;
+}
+
+.skill{
+    width: 753px;
+    height: 227px;
+}
+
+.experience{
+    width: 753px;
+    height: 710px;
+}
+
+.portfolio{
+    width: 753px;
+    height: 966px;
+}
+
+.edit-input label,
+.skill-input label,
+.upload-input label{
+    font-weight: 400;
+    font-size: 14px;
+    color: #9EA0A5;
+    margin-top: 1.5rem;
+}
+
+.upload-input input{
+    width: 693px;
+}
+
+.edit-input input{
+    width: 693px;
+    height: 50px;
+    background: #FFFFFF;
+    border: 1px solid #E2E5ED;
+    border-radius: 4px;
+    padding: 0.75rem;
+}
+
+.edit-input textarea{
+    width: 693px;
+}
+
+.skill-input{
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.skill-input input{
+    width: 583px;
+    height: 50px;
+}
+
+.skill-input button,
+.skill-input button:hover{
+    margin-left: 1.5rem;
+    width: 80px;
+    height: 50px;
+    color: var(--white)!important;
+    background-color: var(--yellow)!important;
+    border-radius: 4px;
+}
+
+.second-row{
+    display: flex;
+    width: 693px;
+    margin-top: 1.5rem;
+    justify-content: space-between;
+}
+
+.second-row label{
+    font-size: 14px;
+    color: #9EA0A5;
+}
+
+.second-row input{
+    width: 336px;
+    height: 50px;
+}
+
+.radio-section{
+    margin-top: 2rem;
+}
+
+.radio-section label{
+    font-size: 14px;
+}
+
+.radio-inline{
+    display: flex;
+}
+
+.btn-submit{
+    margin-top: 2.375rem;
+    color: var(--white);
+    border-radius: 4px;
+    border: 0;
+    width: 30%;
+    height: 50px;
+    background-color: var(--purple);
+}

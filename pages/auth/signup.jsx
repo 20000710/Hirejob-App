@@ -10,6 +10,7 @@ const Signup = () => {
     const [loading, setLoading] = useState(false)
     const [isError, setIsError] = useState("");
     const [role, setRole] = useState("");
+    const [disabled, setDisabled] = useState(true);
     const router = useRouter()
     const dispatch = useDispatch();
     const [confirmPassword, setConfirmPasword] = useState("");
@@ -32,9 +33,9 @@ const Signup = () => {
             return;
         }
 
-        if(role === "worker"){
+        if (role === "worker") {
             dispatch(registerWorker(form, router, setLoading));
-        } else if(role === "recruiter"){
+        } else if (role === "recruiter") {
             dispatch(registerRecruiter(form, router, setLoading));
         }
     }
@@ -59,6 +60,7 @@ const Signup = () => {
 
     const handleRole = (data) => {
         setRole(data)
+        setDisabled(false)
     }
     console.log(role);
     return (
@@ -209,6 +211,7 @@ const Signup = () => {
                                 <button
                                     type="submit"
                                     className="btn btn-warning width-btn text-light wb login-btn"
+                                    disabled={disabled}
                                 >
                                     Daftar
                                 </button>

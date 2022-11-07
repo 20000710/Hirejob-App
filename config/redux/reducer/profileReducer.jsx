@@ -16,6 +16,10 @@ const initialState = {
         ...state,
         workerDetail: action.payload,
       };
+    } else if(action.type === "UPDATE_WORKER_PROFILE"){
+      return state;
+    } else if(action.type === "UPLOAD_IMAGE_WORKER"){
+        return state;
     } else if (action.type === "GET_ALL_RECRUITER") {
       return {
         ...state,

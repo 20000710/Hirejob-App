@@ -29,7 +29,7 @@ const Login = () => {
         if (role === "worker") {
             dispatch(loginWorker(form, router, setLoading))
         } else if (role === "recruiter") {
-            dispatch(loginRecruiter(form, router, setLoading))
+            dispatch(loginRecruiter(form, router, setLoading, role))
         }
     };
 

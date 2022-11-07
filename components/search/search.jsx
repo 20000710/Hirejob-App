@@ -1,6 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown'
+import { useDispatch } from 'react-redux'
+import { searchWorkers } from '../../config/redux/actions/profileActions'
 
-const Search = () => {
+const Search = ({ token }) => {
+    const dispatch = useDispatch()
+    const [query, setQuery] = useState("")
+    const [sortby, setSortBy] = useState("")
+
+    const handleKeyword = (e) => {
+        setQuery(e.target.value)
+    }
+
+    const handleSelect = (e) => {
+        console.log('e:', e);
+        setSortBy(e)
+    }
+
+    const handleSearch = () => {
+        dispatch(searchWorkers(query, sortby, token))
+    }
+    console.log('sort: ', sortby);
     return (
         <>
             <style jsx>{`
@@ -24,15 +45,6 @@ const Search = () => {
                     border-bottom: 0;
                 }
                 
-                .search-profile .input-group .dropdown-toggle{
-                    border-left: 1px solid #9EA0A5;
-                    border-radius: 0;
-                    height: 58px;
-                    border-top: 0;
-                    border-right: 0;
-                    border-bottom: 0;
-                }
-                
                 .search-profile .input-group .btn-search{
                     width: 121px;
                     height: 54px;
@@ -42,28 +54,25 @@ const Search = () => {
 
             <div className="search-profile">
                 <div className="input-group">
-                    <input type="text" className="form-control" aria-label="Text input with dropdown button" />
-                    <div className="input-group-append">
-                        <button
-                            className="btn btn-outline-secondary dropdown-toggle"
-                            type="button"
-                            data-bs-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                        >
-                            Sort
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li style={{borderBottom: "2px solid #F2F3F4", padding: "20px"}}><a class="dropdown-item" href="#">Sortir berdasarkan nama</a></li>
-                            <li style={{borderBottom: "2px solid #F2F3F4", padding: "20px"}}><a class="dropdown-item" href="#">Sortir berdasarkan Skill</a></li>
-                            <li style={{borderBottom: "2px solid #F2F3F4", padding: "20px"}}><a class="dropdown-item" href="#">Sortir berdasarkan Lokasi</a></li>
-                            <li style={{borderBottom: "2px solid #F2F3F4", padding: "20px"}}><a class="dropdown-item" href="#">Sortir berdasarkan freelance</a></li>
-                            <li style={{padding: "20px"}}><a class="dropdown-item" href="#">Sortir berdasarkan fulltime</a></li>
-                        </ul>
-                        <button className="btn btn-success btn-search my-2 my-sm-0">
-                            Search
-                        </button>
-                    </div>
+                    <input
+                        type="text"
+                        className="form-control"
+                        onChange={handleKeyword}
+                        aria-label="Text input with dropdown button" />
+                    <DropdownButton
+                        title="sort"    
+                        onSelect={handleSelect}
+                        id="dropdown-menu-align-right"
+                    >
+                        <Dropdown.Item eventKey="name">Berdasarkan Nama</Dropdown.Item>
+                        <Dropdown.Item eventKey="domicile">Berdasarkan Lokasi</Dropdown.Item>
+                        <Dropdown.Item eventKey="skills">Berdasarkan Skills</Dropdown.Item>
+                        <Dropdown.Item eventKey="job_desk">Berdasarkan Job Desk</Dropdown.Item>
+                    </DropdownButton>
+                    <button onClick={handleSearch} className="btn btn-success btn-search my-2 my-sm-0">
+                        Search
+                    </button>
+
                 </div>
             </div>
         </>

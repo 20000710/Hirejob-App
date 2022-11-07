@@ -2,8 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import purpleIcon from '../../assets/img/purple-peworld.svg'
+import Cookies from 'js-cookie'
 
 const Navbar = () => {
+    console.log('cookies: ', Cookies.get('token'));
+
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light navbar-home">
@@ -28,41 +31,45 @@ const Navbar = () => {
                                 </a>
                             </Link>
                         </li>
-                        {/* when user already login */}
-                        <li className="nav-item">
-                            <Link href="/home">
-                                <a className="nav-link active home-menu" aria-current="page">
-                                    Home
-                                </a>
-                            </Link>
-                        </li>
-                        {/* when user already login */}
+                        {Cookies.get('token') === undefined || Cookies.get('token') === null ?
+                            <></> :
+                            <li className="nav-item">
+                                <Link href="/home">
+                                    <a className="nav-link active home-menu" aria-current="page">
+                                        Home
+                                    </a>
+                                </Link>
+                            </li>
+                        }
                         <li className="nav-item auth-btn">
-                            {/* when user already login */}
-                            <Link href="/profile">
-                                <a className="nav-link">
-                                    <button className="btn btn-success btn-signup my-2 my-sm-0">
-                                        Profile
-                                    </button>
-                                </a>
-                            </Link>
-                            {/* when user already login */}
-                            {/* before login */}
-                            {/* <Link href="/auth/login">
-                                <a className="nav-link">
-                                    <button className="btn btn-outline-success btn-login my-2 my-sm-0">
-                                        Masuk
-                                    </button>
-                                </a>
-                            </Link>
-                            <Link href="/auth/signup">
-                                <a className="nav-link">
-                                    <button className="btn btn-success btn-signup my-2 my-sm-0">
-                                        Daftar
-                                    </button>
-                                </a>
-                            </Link> */}
-                            {/* before login */}
+                            {Cookies.get('token') === undefined || Cookies.get('token') === null ?
+                                <></> :
+                                <Link href="/profile">
+                                    <a className="nav-link">
+                                        <button className="btn btn-success btn-signup my-2 my-sm-0">
+                                            Profile
+                                        </button>
+                                    </a>
+                                </Link>
+                            }
+                            {Cookies.get('token') === undefined || Cookies.get('token') === null ?
+                                <>
+                                    <Link href="/auth/login">
+                                        <a className="nav-link">
+                                            <button className="btn btn-outline-success btn-login my-2 my-sm-0">
+                                                Masuk
+                                            </button>
+                                        </a>
+                                    </Link>
+                                    <Link href="/auth/signup">
+                                        <a className="nav-link">
+                                            <button className="btn btn-success btn-signup my-2 my-sm-0">
+                                                Daftar
+                                            </button>
+                                        </a>
+                                    </Link>
+                                </> : ""
+                            }
                         </li>
                     </ul>
                 </div>

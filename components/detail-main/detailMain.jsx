@@ -1,66 +1,24 @@
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
-import userPhoto from '../../assets/img/user_default.png'
+import React, { useState } from 'react'
 import mapPin from '../../assets/img/map-pin.svg'
 import instagram from '../../assets/img/instagram.svg'
 import github from '../../assets/img/github.svg'
 import gitlab from '../../assets/img/gitlab.svg'
 import mail from '../../assets/img/mail.svg'
-import editIcon from '../../assets/img/edit-icon.svg'
+import userPhoto from '../../assets/img/user_default.png'
 import portfolio1 from '../../assets/img/portfolio-1.jpg'
-import FormEdit from '../formEdit/formEdit'
-import Link from 'next/link'
-import { useDispatch } from 'react-redux'
-import { uploadImage } from '../../config/redux/actions/profileActions'
+import Cookies from 'js-cookie'
 
-
-const MainProfile = ({ allExp, allPorto, worker, portfolio, experiences, photo, token, user_id }) => {
+const DetailMain = ({ worker, experience, portfolio }) => {
     console.log('worker: ', worker);
-    console.log('portfolio', portfolio);
-    console.log('experiences', experiences);
-    console.log('photo: ', photo);
-    const [navigate, setNavigate] = useState("portfolio");
-    const dispatch = useDispatch();
-    const [edit, setEdit] = useState(false);
-    const [editPhoto, setEditPhoto] = useState(false);
-    const [active, setActive] = useState(false);
-    const [previewImage, setPreviewImage] = useState()
-    const [image, setImage] = useState(photo);
+
     const allSkills = worker.skills !== null || worker.skills !== undefined ? worker.skills?.split(",") : null
+    console.log('experience: ', experience);
+    console.log('portfolio: ', portfolio);
+    console.log('allSkills: ', allSkills);
+    const role = Cookies.get('role');
+    const [navigate, setNavigate] = useState("portfolio");
     const url_image = process.env.URL_IMG
-
-    const handleEdit = () => {
-        setEdit(true);
-    }
-
-    const handleCancelEdit = () => {
-        setEdit(false);
-    }
-
-    const handleEditPhoto = () => {
-        setEditPhoto(true)
-    }
-
-    const handleCancelEditPhoto = () => {
-        setActive(false)
-        setPreviewImage()
-    }
-
-    const handleImageUpload = (e) => {
-        setActive(true)
-        const file = e.target.files[0];
-        setImage(file)
-        setPreviewImage(URL.createObjectURL(e.target.files[0]));
-        console.log('file: ', file)
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        dispatch(uploadImage(image, token, user_id));
-        setActive(false)
-    }
-
-    console.log('previewImage: ', previewImage);
 
     return (
         <>
@@ -316,51 +274,15 @@ const MainProfile = ({ allExp, allPorto, worker, portfolio, experiences, photo, 
                                 <p className="mb-0">
                                     <Image
                                         className="img-fluid"
-                                        src={previewImage == undefined || previewImage == "null" || previewImage == null ?
-                                            (photo == undefined || photo == "null" || photo == null ?
-                                                userPhoto
-                                                :
-                                                url_image + "/" + photo) : previewImage
+                                        src={worker.photo === undefined || worker.photo === null ?
+                                            userPhoto : url_image + "/" + worker.photo
                                         }
                                         alt="card image"
                                         width={100}
                                         height={100}
                                     />
                                 </p>
-                                <div className="edit-photo">
-                                    {editPhoto ?
-                                        <form onSubmit={handleSubmit}>
-                                            {active ?
-                                                <>
-                                                    <div className="d-flex mt-3">
-                                                        <button className="btn-cancel" onClick={handleCancelEditPhoto} type="submit">Cancel</button>
-                                                        <button className="btn-save" type="submit">Save</button>
-                                                    </div>
-                                                </> :
-                                                <>
-                                                    <div className="upload-photo">
-                                                        <label className="btn-label" htmlFor={"upload-photo"}>
-                                                            Select Photo
-                                                        </label>
-                                                        <input
-                                                            name="image"
-                                                            type="file"
-                                                            id="upload-photo"
-                                                            className="btn-upload"
-                                                            accept=".jpeg, .jpg, .png"
-                                                            onChange={(e) => handleImageUpload(e)}
-                                                        />
-                                                    </div> </>
-                                            }
-                                        </form> :
-                                        <Link href={"#"}>
-                                            <a onClick={handleEditPhoto}>
-                                                <Image width={16} height={16} src={editIcon} alt="edit icon" />
-                                                <span>Edit</span>
-                                            </a>
-                                        </Link>
-                                    }
-                                </div>
+
                                 <div className="d-flex flex-column card-desc">
                                     <h4 className="card-title">{worker.name}</h4>
                                     <p className="card-text">{worker.job_Desk !== "" || worker.job_desk !== null ? worker.job_desk : "unknown job  desk"}</p>
@@ -377,24 +299,20 @@ const MainProfile = ({ allExp, allPorto, worker, portfolio, experiences, photo, 
                                         {worker.description !== "" ? worker.description : "no description"}
                                     </div>
                                     <div className="hire-btn">
-                                        {!edit ?
-                                            <>
-                                                <button onClick={handleEdit} className="btn btn-purple">Edit Profile</button>
-                                            </>
-                                            :
-                                            <>
-                                                <button onClick={handleCancelEdit} className="btn btn-white">Batal</button>
-                                            </>
+                                        {role === "recruiter" ? (
+                                            <button className="btn btn-purple">Hire</button>
+                                        ) : ""
                                         }
                                     </div>
                                     <div className="skill">
                                         <label>Skill</label>
-                                        <div className="d-flex">
+                                        <div className="container row">
                                             {allSkills === null || allSkills === undefined ?
                                                 <p>-</p> :
                                                 allSkills.map((val, index) => (
-                                                <div key={index} className="skill-tag">{val}</div>
-                                            ))}
+                                                    <div key={index} className="skill-tag">{val}</div>
+                                                ))
+                                            }
                                         </div>
                                     </div>
                                     <div className="contact">
@@ -418,80 +336,80 @@ const MainProfile = ({ allExp, allPorto, worker, portfolio, experiences, photo, 
                                 </div>
                             </div>
                         </div>
-                        {edit ?
-                            <FormEdit allExp={allExp} allPorto={allPorto} worker={worker} portfolio={portfolio} experiences={experiences} token={token}/>
-                            :
-                            <div className="card text-center portfolio-card">
-                                <div className="card-header">
-                                    <ul className="nav nav-tabs card-header-tabs">
-                                        <li className="nav-item">
-                                            <a className="nav-link" aria-current="true" id="portfolio" onClick={() => setNavigate("portfolio")} href="#portfolio">Portfolio</a>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className="nav-link" id="pengalaman" onClick={() => setNavigate("experience")} href="#pengalaman">Pengalaman Kerja</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="card-body">
-                                    {navigate === "portfolio" ?
-                                        <div className="portfolio-section row">
-                                            {portfolio.map((res, index) => (
-                                                <div key={index} className="portfolio-img">
-                                                    <Image
-                                                        src={
-                                                            res.photo === undefined || res.photo === null ?
+                        <div className="card text-center portfolio-card">
+                            <div className="card-header">
+                                <ul className="nav nav-tabs card-header-tabs">
+                                    <li className="nav-item">
+                                        <a className="nav-link" aria-current="true" id="portfolio" onClick={() => setNavigate("portfolio")} href="#portfolio">Portfolio</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" id="pengalaman" onClick={() => setNavigate("experience")} href="#pengalaman">Pengalaman Kerja</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="card-body">
+                                {navigate === "portfolio" ?
+                                    <div className="portfolio-section row">
+                                        {portfolio.map((res, index) => (
+                                            <div key={index} className="portfolio-img">
+                                                <Image
+                                                    src={
+                                                        res.photo === undefined || res.photo === null ?
                                                             portfolio1 :
                                                             url_image + "/" + res.photo
-                                                        }
-                                                        width={219}
-                                                        height={148}
-                                                        style={{ borderRadius: "4px" }}
-                                                        alt="portfolio image"
-                                                    />
-                                                    <label>{res.portfolio_name !== undefined || res.portfolio_name !== null ?
-                                                        res.portfolio_name : "portfolio is empty"
                                                     }
-                                                    </label>
-                                                </div>
-                                            ))}
-                                        </div> :
-                                        <div className="experience-section">
-                                            {experiences.map((res, index) => (
-                                            <div key={index} className="company-icon">
-                                                <Image 
-                                                    width={74} 
-                                                    height={74} 
-                                                    src={
-                                                        res.photo == undefined || res.photo == null ?
-                                                        "" :
-                                                        url_image + "/" + res.photo
-                                                    } 
-                                                    alt="company image" />
-                                                <div className="d-flex flex-column align-items-start">
-                                                    <h3>{res.position !== undefined || res.position !== null ?
-                                                        res.position : "position no is empty"
-                                                    }</h3>
-                                                    <h4>{
-                                                        res.company_name !== undefined || res.company_name ?
-                                                            res.company_name : "company name is not set"
-                                                    }</h4>
-                                                    <div className="datetime">
-                                                        <p>{res.started === undefined || res.started === null &&
-                                                            res.ended === undefined || res.ended === null ?
-                                                            "-" : 
-                                                            `${res.started} - ${res.ended}`
-                                                            
-                                                        }</p>
+                                                    width={219}
+                                                    height={148}
+                                                    style={{ borderRadius: "4px" }}
+                                                    alt="portfolio image"
+                                                />
+                                                <label>{res.portfolio_name !== undefined || res.portfolio_name !== null ?
+                                                    res.portfolio_name : "portfolio is empty"
+                                                }
+                                                </label>
+                                            </div>
+                                        )
+                                        )}
+                                    </div> :
+                                    <div className="experience-section">
+                                        {experience.map(res => (
+                                            <>
+                                                <div className="company-icon">
+                                                    <Image
+                                                        width={74}
+                                                        height={74}
+                                                        src={
+                                                            res.photo === undefined || res.photo === null ? "" :
+                                                            url_image + "/" + res.photo
+                                                        }
+                                                        alt="company image"
+                                                    />
+                                                    <div className="d-flex flex-column align-items-start">
+                                                        <h3>{res.position !== undefined || res.position !== null ?
+                                                            res.position : "position no is empty"
+                                                        }</h3>
+                                                        <h4>{
+                                                            res.company_name === undefined || res.company_name === null ?
+                                                                "company name is not set" :
+                                                                res.company_name
+                                                        }</h4>
+                                                        <div className="datetime">
+                                                            <p>{res.started === undefined || res.started === null &&
+                                                                res.ended === undefined || res.ended === null ?
+                                                                "-" :
+                                                                `${res.started} - ${res.ended}`
+                                                            }</p>
+
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            ))}
-                                            <hr />
-                                        </div>
-                                    }
-                                </div>
+                                                <hr />
+                                            </>
+                                        ))}
+                                    </div>
+                                }
                             </div>
-                        }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -499,4 +417,4 @@ const MainProfile = ({ allExp, allPorto, worker, portfolio, experiences, photo, 
     )
 }
 
-export default MainProfile
+export default DetailMain

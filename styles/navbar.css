@@ -68,8 +68,13 @@
 
     .navbar-home .navbar-collapse,
     .navbar-profile .navbar-collapse{
+        margin-top: 0.5rem;
         z-index: 1;
         background-color: #fff;
+    }
+
+    .navbar-profile .navbar-menu{
+        align-items: flex-start;
     }
 
     .navbar-home ul.navbar-menu{

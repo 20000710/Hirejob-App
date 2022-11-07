@@ -1,7 +1,15 @@
 const initialState = {
-    data: {
+    dataWorker: {
       name: "",
       email: "",
+      phone: "",
+      password: "",
+    },
+    dataRecruiter: {
+      name: "",
+      email: "",
+      company: "",
+      position: "",
       phone: "",
       password: "",
     },
@@ -14,16 +22,26 @@ const initialState = {
         ...state,
         isLoading: true,
       };
-    } else if (action.type === "USER_REGISTER_SUCCESS") {
+    } else if (action.type === "WORKER_REGISTER_SUCCESS") {
       return {
         ...state,
-        data: action.payload,
+        dataWorker: action.payload,
       };
-    } else if (action.type === "LOGIN_SUCCESS") {
+    } else if (action.type === "WORKER_LOGIN_SUCCESS") {
       return {
         ...state,
-        data: action.payload,
+        dataWorker: action.payload,
       };
+    } else if(action.type === "RECRUITER_REGISTER_SUCCESS") {
+      return {
+        ...state,
+        dataRecruiter: action.payload,
+      }
+    } else if(action.type === "RECRUITER_LOGIN_SUCCESS"){
+      return{
+        ...state,
+        dataRecruiter: action.payload,
+      }
     } else {
       return state;
     }

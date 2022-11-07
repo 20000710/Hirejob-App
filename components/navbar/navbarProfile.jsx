@@ -6,18 +6,21 @@ import bellIcon from '../../assets/img/bell.svg'
 import mailIcon from '../../assets/img/mail.svg'
 import profileIcon from '../../assets/img/profile.svg'
 import { useRouter } from 'next/router'
+import { destroyCookie } from "nookies";
 
-const NavbarProfile = () => {
+const NavbarProfile = ({ photo }) => {
     const router = useRouter()
+    const url_image = process.env.URL_IMG
     const handleClick = () => {
-        if(localStorage !== undefined){
-            localStorage.removeItem("token");
-            router.push("/")
-        }
-        else{
-            return
-        }
-    }   
+        destroyCookie(null, 'token', {
+            path: '/'
+        })
+        destroyCookie(null, 'user_id', {
+            path: '/'
+        })
+        router.push("/")
+    }
+    
     return (
         <nav className="navbar navbar-expand-lg navbar-light navbar-profile">
             <div className="container">
@@ -60,20 +63,29 @@ const NavbarProfile = () => {
                                 aria-haspopup="true"
                                 aria-expanded="false"
                             >
-                                <Image src={profileIcon} alt="profile icon" width={32} height={32} />
+                                <Image 
+                                    src={photo === undefined || photo === "null" || photo == null ? 
+                                        profileIcon : 
+                                        url_image + "/" + photo
+                                    } 
+                                    alt="profile icon" 
+                                    width={32} 
+                                    height={32} 
+                                />
                             </button>
                             <ul className="dropdown-menu">
                                 <li>
-                                    <Link href="#">
-                                        <button className="btn btn-danger" style={{marginLeft: "1rem"}} onClick={handleClick} >Log Out</button>
+                                    <Link href="/profile">
+                                        <a>
+                                        <button className="btn btn-primary mb-3" style={{ marginLeft: "1rem" }} >Lihat Profile</button>
+                                        </a>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href={"#"}>
-                                        <a className="dropdown-item" href="#">Edit Profile</a>
+                                    <Link href="#">
+                                        <button className="btn btn-danger" style={{ marginLeft: "1rem" }} onClick={handleClick} >Log Out</button>
                                     </Link>
                                 </li>
-
                             </ul>
                         </li>
                     </ul>
