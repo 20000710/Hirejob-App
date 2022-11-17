@@ -4,6 +4,7 @@ import Footer from '../components/footer/footer'
 import MainContent from '../components/main-content/mainContent'
 import Navbar from '../components/navbar/navbar'
 
+
 export default function LandingPage() {
   
   return (

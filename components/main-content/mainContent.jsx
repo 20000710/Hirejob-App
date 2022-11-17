@@ -1,11 +1,18 @@
 import Image from 'next/image'
 import React from 'react'
-import agencyImg from '../../assets/img/agency.jpg'
-import clientImg from '../../assets/img/client.jpg'
-import clientImg2 from '../../assets/img/client-2.jpg'
+import landingImg from '../../assets/img/landing-img.png'
+import landingImg2 from '../../assets/img/landing-img2.png'
+import landingImg3 from '../../assets/img/landing-img3.png'
 import personImg1 from '../../assets/img/person-1.png'
 import personImg2 from '../../assets/img/person-2.png'
 import personImg3 from '../../assets/img/person-3.png'
+import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
+// import "./App.css";
+
+SwiperCore.use([EffectCoverflow, Pagination]);
 
 const MainContent = () => {
     return (
@@ -24,21 +31,21 @@ const MainContent = () => {
                         <button className="btn btn-start">Mulai Dari Sekarang</button>
                     </div>
                     <div className="col-lg-7 d-flex justify-content-center align-items-center right-img">
-                        <Image src={agencyImg} alt="agency image" />
-                        <div className="rectangle mt-4"></div>
+                        <Image src={landingImg} alt="agency image" />
+                        {/* <div className="rectangle mt-4"></div>
                         <div className="rectangle-wrapper">
                             <div className="rectangle2"></div>
                             <div className="rectangle3"></div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="row second-row">
                     <div className="col-lg-5 d-flex flex-column left-side">
-                        <Image src={clientImg} alt="client image" />
-                        <div className="rectangle"></div>
+                        <Image src={landingImg2} alt="client image" />
+                        {/* <div className="rectangle"></div>
                         <div className="rectangle-wrapper">
                             <div className="rectangle2"></div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="col-lg-7 d-flex flex-column align-items-center right-text">
                         <div className="title">
@@ -112,11 +119,11 @@ const MainContent = () => {
                         </div>
                     </div>
                     <div className="col-lg-5 d-flex flex-column align-items-center right-img2">
-                        <Image src={clientImg2} alt="client image" style={{ width: "496px", height: "389.85px" }} />
-                        <div className="rectangle"></div>
+                        <Image src={landingImg3} alt="client image" style={{ width: "496px", height: "389.85px" }} />
+                        {/* <div className="rectangle"></div>
                         <div className="rectangle-wrapper">
                             <div className="rectangle2"></div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
@@ -125,6 +132,31 @@ const MainContent = () => {
                     <h1>Their opinion about peworld</h1>
                 </div>
                 <div className="row fourth-row">
+                    {/* <Swiper
+                        effect={"coverflow"}
+                        grabCursor={true}
+                        centeredSlides={true}
+                        slidesPerView={"auto"}
+                        coverflowEffect={{
+                            rotate: 50,
+                            stretch: 0,
+                            depth: 100,
+                            modifier: 1,
+                            slideShadows: false,
+                        }}
+                        pagination={true}
+                        className="mySwiper"
+                    >
+                        <SwiperSlide>
+                            <Image src={personImg1} alt="" />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Image src={personImg2} alt="" />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Image src={personImg3} alt="" />
+                        </SwiperSlide>
+                    </Swiper> */}
                     <div className="card">
                         <div className="card-body text-center">
                             <p><Image className="img-fluid" src={personImg1} alt="card image" /></p>

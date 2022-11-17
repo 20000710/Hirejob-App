@@ -26,7 +26,7 @@ const MainProfile = ({ allExp, allPorto, worker, portfolio, experiences, photo, 
     const [active, setActive] = useState(false);
     const [previewImage, setPreviewImage] = useState()
     const [image, setImage] = useState(photo);
-    const allSkills = worker.skills !== null || worker.skills !== undefined ? worker.skills?.split(",") : null
+    const allSkills = worker.skills !== null || worker.skills !== undefined || worker.skills !== "" ? worker.skills?.split(",") : null
     const url_image = process.env.URL_IMG
 
     const handleEdit = () => {
@@ -97,7 +97,7 @@ const MainProfile = ({ allExp, allPorto, worker, portfolio, experiences, photo, 
 
             .location-name{
                 color: var(--dark-grey);
-                margin-left 1rem;
+                margin-left: 1rem;
             }
 
             .status{
@@ -306,6 +306,14 @@ const MainProfile = ({ allExp, allPorto, worker, portfolio, experiences, photo, 
                 border-radius: 10px;
                 color: var(--white);
             }
+            
+            @media screen and (max-width: 600px) {
+                .main-profile .container{
+                    padding-left: 2rem;
+                    padding-right: 2rem;
+                }
+            }
+
         `}</style>
             <div className="banner-profile"></div>
             <div className="main-profile">
@@ -316,8 +324,8 @@ const MainProfile = ({ allExp, allPorto, worker, portfolio, experiences, photo, 
                                 <p className="mb-0">
                                     <Image
                                         className="img-fluid"
-                                        src={previewImage == undefined || previewImage == "null" || previewImage == null ?
-                                            (photo == undefined || photo == "null" || photo == null ?
+                                        src={previewImage == undefined || previewImage == "" || previewImage == null ?
+                                            (photo == undefined || photo == "" || photo == null ?
                                                 userPhoto
                                                 :
                                                 url_image + "/" + photo) : previewImage

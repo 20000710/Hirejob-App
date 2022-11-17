@@ -23,7 +23,8 @@ const MainHome = ({ allWorkers, token }) => {
   }
 
   const handleSearch = () => {
-    dispatch(searchWorkers(query, sortby, token))
+    const search = query.toLowerCase()
+    dispatch(searchWorkers(search, sortby, token))
   }
 
   console.log('workers: ', allWorkers);

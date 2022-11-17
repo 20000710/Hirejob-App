@@ -14,29 +14,28 @@ export async function getServerSideProps(ctx) {
       token: token
     }
   })
-  console.log('workers-data: ', resWorkers.data);
-  const resWorker = await axios.get(process.env.API_BACKEND + "workers/" + user_id, {
-    headers: {
-      token: token
-    }
-  })
+  
+  // const resWorker = await axios.get(process.env.API_BACKEND + "workers/" + user_id, {
+  //   headers: {
+  //     token: token
+  //   }
+  // })
 
   return {
     props: {
       workers: resWorkers.data.data,
-      worker: resWorker.data.data,
+      // worker: resWorker.data.data,
       token
     }
   }
 }
 
-const Home = ({ workers, worker, token }) => {
-  console.log('worker-home: ', worker);
-  const photo = worker?.photo
+const Home = ({ workers, token }) => {
+  
   return (
     <div>
-      <NavbarProfile photo={photo} />
-      <MainHome allWorkers={workers} token={token}/>
+      <NavbarProfile />
+      <MainHome allWorkers={workers} token={token} />
       <Footer />
     </div>
   )

@@ -18,6 +18,9 @@ const NavbarProfile = ({ photo }) => {
         destroyCookie(null, 'user_id', {
             path: '/'
         })
+        destroyCookie(null, 'role', {
+            path: '/'
+        })
         router.push("/")
     }
     
@@ -62,9 +65,10 @@ const NavbarProfile = ({ photo }) => {
                                 data-bs-toggle="dropdown"
                                 aria-haspopup="true"
                                 aria-expanded="false"
+                                style={{ margin: "0" }}
                             >
                                 <Image 
-                                    src={photo === undefined || photo === "null" || photo == null ? 
+                                    src={photo === undefined || photo === "" || photo == null ? 
                                         profileIcon : 
                                         url_image + "/" + photo
                                     } 

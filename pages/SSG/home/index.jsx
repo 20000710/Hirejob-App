@@ -11,13 +11,14 @@ export async function getStaticProps() {
   }
 }
 
-const ssgHome = ({ users }) => {
+const SsgHome = ({ users }) => {
   <NavbarProfile/>
-  console.log(users);
-  return <div className="container">{users.map(res => 
+  // console.log(users.json());
+  return <div className="container">{
+    users.map(res => 
   <>
     <p>{res.name}</p>
   </>)}</div>;
 }
 
-export default ssgHome
+export default SsgHome

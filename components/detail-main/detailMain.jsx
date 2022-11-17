@@ -264,6 +264,13 @@ const DetailMain = ({ worker, experience, portfolio }) => {
                 border-radius: 10px;
                 color: var(--white);
             }
+
+            @media screen and (max-width: 600px) {
+                .main-profile .container{
+                    padding-left: 2rem;
+                    padding-right: 2rem;
+                }
+            }
         `}</style>
             <div className="banner-profile"></div>
             <div className="main-profile">

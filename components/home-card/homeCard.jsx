@@ -10,22 +10,28 @@ import { getAllWorkers } from '../../config/redux/actions/profileActions'
 const HomeCard = ({ handleSearch, allWorkers, token }) => {
     const dispatch = useDispatch()
     const [urlImg, setUrlImg] = useState("")
-    const [workerList, setWorkerList] = useState([])
     const [skill, setSkill] = useState([])
     console.log('allSkills: ', skill);
     const { workers } = useSelector(state => state.profile)
+    console.log('allWorkers: ', allWorkers);
     console.log('workers-search: ', workers);
+
+
+    const getAllSkills = (skill) => {
+        const filter = skill.map(res => res?.split(","))
+    
+        setSkill(filter)
+    }
 
     useEffect(() => {
         const url_image = process.env.URL_IMG
         setUrlImg((url_image))
-        allWorkers.map(val => {
-            const split = val.skills?.split(',')
-            setSkill(split)
-        })
+        const allSkills = workers.map(res => res.skills !== null || res.skills !== undefined ? res.skills : "")
+        getAllSkills(allSkills)
         dispatch(getAllWorkers(token))
         handleSearch
     }, [])
+
     return (
         <>
             <style jsx>{`
@@ -92,12 +98,6 @@ const HomeCard = ({ handleSearch, allWorkers, token }) => {
                     justify-content: center;
                 }
 
-                .home-card{
-                    width: 90%;
-                    margin-left: auto;
-                    margin-right: auto;
-                }
-
                 .home-card .card-body{
                     flex-direction: column;
                 }
@@ -110,7 +110,6 @@ const HomeCard = ({ handleSearch, allWorkers, token }) => {
                     font-size: 15px;
                     width: auto;
                     height: auto;
-                    margin-top: 1.5rem;
                     padding: 0.5rem 1rem;
                 }
 
@@ -121,7 +120,7 @@ const HomeCard = ({ handleSearch, allWorkers, token }) => {
             }
             
         `}</style>
-            {workers.map(res => <>
+            {workers.map((res, index) => <>
                 <div className="home-card">
                     <div className="card">
                         <div className="card-body d-flex align-items-center">
@@ -131,7 +130,7 @@ const HomeCard = ({ handleSearch, allWorkers, token }) => {
                                     height={120}
                                     className="img-fluid img-profile"
                                     src={
-                                        res.photo_worker == undefined || res.photo_worker == "null" ?
+                                        res.photo_worker == undefined || res.photo_worker == "" ?
                                             userPhoto :
                                             urlImg + "/" + res.photo_worker
                                     }
@@ -154,13 +153,8 @@ const HomeCard = ({ handleSearch, allWorkers, token }) => {
                                         </div>
                                     </div>
                                     <div className="d-flex">
-                                        {skill !== null ?
-                                            <p>-</p> :
-
-                                            skill.map((res, index) => (
-                                                <div className="skill-tag" key={index}>{res[index]}</div>
-                                            ))
-                                        }
+                                        -
+                                        {/* <div className="skill-tag" key={idx}>{res[index]}</div> */}
                                     </div>
                                 </div>
                                 <div className="button-profile">

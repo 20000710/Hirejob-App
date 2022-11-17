@@ -13,7 +13,7 @@ import Navbar from '../components/navbar/navbar'
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
-    import("bootstrap/dist/js/bootstrap");
+    require("bootstrap/dist/js/bootstrap.bundle.min.js");
     document.title = "Peworld | Hire pewpeople"
   }, []);
 

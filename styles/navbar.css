@@ -85,10 +85,6 @@
         padding: 0rem;
     }
 
-    .home-banner{
-        margin-top: 4rem;
-    }
-
     .navbar-profile .profile-menu{
         z-index: 1;
     }
@@ -96,5 +92,10 @@
     .navbar-menu a.home-menu{
         margin: 0;
         padding-bottom: 1rem;
+    }
+
+    .navbar-collapse{
+        border-radius: 8px;
+        padding: 1rem;
     }
 }

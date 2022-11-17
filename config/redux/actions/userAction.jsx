@@ -44,7 +44,7 @@ export const registerRecruiter = (data, router, setLoading) => async (dispatch) 
   }
 };
 
-export const loginWorker = (data, router, setLoading) => async (dispatch) => {
+export const loginWorker = (data, router, setLoading, role) => async (dispatch) => {
   try {
     const result = await axios.post(
       process.env.API_BACKEND + "auth/workers/login",
@@ -59,6 +59,10 @@ export const loginWorker = (data, router, setLoading) => async (dispatch) => {
       path: '/',
     })
     setCookie(null, 'user_id', id, {
+      maxAge: 30 * 24 * 60 * 60,
+      path: '/',
+    })
+    setCookie(null, 'role', role, {
       maxAge: 30 * 24 * 60 * 60,
       path: '/',
     })

@@ -40,6 +40,7 @@ export const getDetailPortfolio = (id, token) => async (dispatch) => {
 }
 
 export const createPortfolio = (data, token) => async (dispatch) => {
+    console.log('token: ', token);
     try {
         const form = new FormData();
         form.append("name", data.app_name)
@@ -47,7 +48,7 @@ export const createPortfolio = (data, token) => async (dispatch) => {
         form.append("type", data.portfolio_type)
         form.append("photo", data.portfolio_photo)
         form.append("porto_description", data.description_porto)
-        const result = await axios.post(process.env.API_BACKEND + "portofolio", form, {
+        const result = await axios.post(process.env.API_BACKEND + "portofolio/", form, {
             headers: {
                 token: token
             }

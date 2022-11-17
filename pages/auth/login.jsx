@@ -27,7 +27,7 @@ const Login = () => {
         e.preventDefault();
         setLoading(true);
         if (role === "worker") {
-            dispatch(loginWorker(form, router, setLoading))
+            dispatch(loginWorker(form, router, setLoading, role))
         } else if (role === "recruiter") {
             dispatch(loginRecruiter(form, router, setLoading, role))
         }
