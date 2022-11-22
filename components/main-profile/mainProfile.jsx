@@ -27,7 +27,6 @@ const MainProfile = ({ allExp, allPorto, worker, portfolio, experiences, photo, 
     const [previewImage, setPreviewImage] = useState()
     const [image, setImage] = useState(photo);
     const allSkills = worker.skills !== null || worker.skills !== undefined || worker.skills !== "" ? worker.skills?.split(",") : null
-    const url_image = process.env.URL_IMG
 
     const handleEdit = () => {
         setEdit(true);
@@ -327,8 +326,7 @@ const MainProfile = ({ allExp, allPorto, worker, portfolio, experiences, photo, 
                                         src={previewImage == undefined || previewImage == "" || previewImage == null ?
                                             (photo == undefined || photo == "" || photo == null ?
                                                 userPhoto
-                                                :
-                                                url_image + "/" + photo) : previewImage
+                                                : photo) : previewImage
                                         }
                                         alt="card image"
                                         width={100}
@@ -448,8 +446,7 @@ const MainProfile = ({ allExp, allPorto, worker, portfolio, experiences, photo, 
                                                     <Image
                                                         src={
                                                             res.photo === undefined || res.photo === null ?
-                                                            portfolio1 :
-                                                            url_image + "/" + res.photo
+                                                            portfolio1 : res.photo
                                                         }
                                                         width={219}
                                                         height={148}
@@ -471,8 +468,7 @@ const MainProfile = ({ allExp, allPorto, worker, portfolio, experiences, photo, 
                                                     height={74} 
                                                     src={
                                                         res.photo == undefined || res.photo == null ?
-                                                        "" :
-                                                        url_image + "/" + res.photo
+                                                        "" : res.photo
                                                     } 
                                                     alt="company image" />
                                                 <div className="d-flex flex-column align-items-start">

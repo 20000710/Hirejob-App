@@ -18,7 +18,6 @@ const DetailMain = ({ worker, experience, portfolio }) => {
     console.log('allSkills: ', allSkills);
     const role = Cookies.get('role');
     const [navigate, setNavigate] = useState("portfolio");
-    const url_image = process.env.URL_IMG
 
     return (
         <>
@@ -282,7 +281,7 @@ const DetailMain = ({ worker, experience, portfolio }) => {
                                     <Image
                                         className="img-fluid"
                                         src={worker.photo === undefined || worker.photo === null ?
-                                            userPhoto : url_image + "/" + worker.photo
+                                            userPhoto : worker.photo
                                         }
                                         alt="card image"
                                         width={100}
@@ -363,7 +362,7 @@ const DetailMain = ({ worker, experience, portfolio }) => {
                                                     src={
                                                         res.photo === undefined || res.photo === null ?
                                                             portfolio1 :
-                                                            url_image + "/" + res.photo
+                                                            res.photo
                                                     }
                                                     width={219}
                                                     height={148}
@@ -387,7 +386,7 @@ const DetailMain = ({ worker, experience, portfolio }) => {
                                                         height={74}
                                                         src={
                                                             res.photo === undefined || res.photo === null ? "" :
-                                                            url_image + "/" + res.photo
+                                                            res.photo
                                                         }
                                                         alt="company image"
                                                     />

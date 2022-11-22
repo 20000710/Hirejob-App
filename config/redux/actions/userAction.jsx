@@ -7,8 +7,11 @@ import jwtDecode from "jwt-decode";
 export const registerWorker = (data, router, setLoading) => async (dispatch) => {
   try {
     const result = await axios.post(
-      process.env.API_BACKEND + "auth/workers/register",
-      data
+      process.env.API_BACKEND + "auth/workers/register", data, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    }
     );
     const user = result.data.data;
     toast.success(user.message, { toastId: "successSignUp" })
@@ -47,8 +50,11 @@ export const registerRecruiter = (data, router, setLoading) => async (dispatch) 
 export const loginWorker = (data, router, setLoading, role) => async (dispatch) => {
   try {
     const result = await axios.post(
-      process.env.API_BACKEND + "auth/workers/login",
-      data
+      process.env.API_BACKEND + "auth/workers/login", data, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        }
+      }
     );
     const user = result.data;
     const { id } = jwtDecode(result.data.token)

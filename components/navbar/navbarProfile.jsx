@@ -10,7 +10,6 @@ import { destroyCookie } from "nookies";
 
 const NavbarProfile = ({ photo }) => {
     const router = useRouter()
-    const url_image = process.env.URL_IMG
     const handleClick = () => {
         destroyCookie(null, 'token', {
             path: '/'
@@ -69,8 +68,7 @@ const NavbarProfile = ({ photo }) => {
                             >
                                 <Image 
                                     src={photo === undefined || photo === "" || photo == null ? 
-                                        profileIcon : 
-                                        url_image + "/" + photo
+                                        profileIcon : photo
                                     } 
                                     alt="profile icon" 
                                     width={32} 

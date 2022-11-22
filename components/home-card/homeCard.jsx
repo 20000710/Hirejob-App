@@ -7,9 +7,8 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllWorkers } from '../../config/redux/actions/profileActions'
 
-const HomeCard = ({ handleSearch, allWorkers, token }) => {
+const HomeCard = ({ search, sortby, handleSearch, allWorkers, token }) => {
     const dispatch = useDispatch()
-    const [urlImg, setUrlImg] = useState("")
     const [skill, setSkill] = useState([])
     console.log('allSkills: ', skill);
     const { workers } = useSelector(state => state.profile)
@@ -24,11 +23,9 @@ const HomeCard = ({ handleSearch, allWorkers, token }) => {
     }
 
     useEffect(() => {
-        const url_image = process.env.URL_IMG
-        setUrlImg((url_image))
         const allSkills = workers.map(res => res.skills !== null || res.skills !== undefined ? res.skills : "")
         getAllSkills(allSkills)
-        dispatch(getAllWorkers(token))
+        dispatch(getAllWorkers(search, sortby, token))
         handleSearch
     }, [])
 
@@ -132,7 +129,7 @@ const HomeCard = ({ handleSearch, allWorkers, token }) => {
                                     src={
                                         res.photo_worker == undefined || res.photo_worker == "" ?
                                             userPhoto :
-                                            urlImg + "/" + res.photo_worker
+                                            res.photo_worker
                                     }
                                     alt="card image"
                                     style={{ borderRadius: "50%" }} />

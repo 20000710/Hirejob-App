@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import HomeCard from '../home-card/homeCard'
 import Pagination from '../pagination/pagination'
 import Search from '../search/search'
@@ -6,13 +6,13 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown'
 import { useDispatch } from 'react-redux';
 import styles from './mainHome.module.css'
-import { searchWorkers } from '../../config/redux/actions/profileActions';
+import { getAllWorkers } from '../../config/redux/actions/profileActions';
 
 const MainHome = ({ allWorkers, token }) => {
   const dispatch = useDispatch()
   const [query, setQuery] = useState("")
   const [sortby, setSortBy] = useState("")
-
+  const search = query.toLowerCase()
   const handleKeyword = (e) => {
     setQuery(e.target.value)
   }
@@ -23,10 +23,9 @@ const MainHome = ({ allWorkers, token }) => {
   }
 
   const handleSearch = () => {
-    const search = query.toLowerCase()
-    dispatch(searchWorkers(search, sortby, token))
+    dispatch(getAllWorkers(search, sortby, token))
   }
-
+  
   console.log('workers: ', allWorkers);
   return (
     <>
@@ -120,7 +119,7 @@ const MainHome = ({ allWorkers, token }) => {
 
             </div>
           </div>
-          <HomeCard handleSearch={handleSearch} allWorkers={allWorkers} token={token} />
+          <HomeCard search={search} sortby={sortby} handleSearch={handleSearch} allWorkers={allWorkers} token={token} />
           <Pagination />
         </div>
       </div>

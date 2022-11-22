@@ -1,12 +1,16 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import purpleIcon from '../../assets/img/purple-peworld.svg'
 import Cookies from 'js-cookie'
 
 const Navbar = () => {
-    console.log('cookies: ', Cookies.get('token'));
+    const [token, setToken] = useState(null)
 
+    useEffect(() => {
+        const token = Cookies.get('token')
+        setToken(token)
+    },[])
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light navbar-home">
@@ -31,7 +35,7 @@ const Navbar = () => {
                                 </a>
                             </Link>
                         </li>
-                        {Cookies.get('token') === undefined || Cookies.get('token') === null ?
+                        {token === undefined || token === null ?
                             <></> :
                             <li className="nav-item">
                                 <Link href="/home">
@@ -42,7 +46,7 @@ const Navbar = () => {
                             </li>
                         }
                         <li className="nav-item auth-btn">
-                            {Cookies.get('token') === undefined || Cookies.get('token') === null ?
+                            {token === undefined || token === null ?
                                 <></> :
                                 <Link href="/profile">
                                     <a className="nav-link">
@@ -52,7 +56,7 @@ const Navbar = () => {
                                     </a>
                                 </Link>
                             }
-                            {Cookies.get('token') === undefined || Cookies.get('token') === null ?
+                            {token === undefined || token === null ?
                                 <>
                                     <Link href="/auth/login">
                                         <a className="nav-link">

@@ -2,23 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const getAllWorkers = (token) => async (dispatch) => {
-    try {
-        const users = await axios.get(
-            process.env.API_BACKEND + "/workers", {
-            headers: {
-                token: token
-            }
-        }
-        )
-        const result = users.data.data
-        dispatch({ type: "GET_ALL_WORKER", payload: result })
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-export const searchWorkers = (query, sortby, token) => async (dispatch) => {
+export const getAllWorkers = (query, sortby, token) => async (dispatch) => {
     try {
             const users = await axios.get(
                 `${process.env.API_BACKEND}workers?search=${query}&sort=${sortby}`, {
