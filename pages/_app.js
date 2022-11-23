@@ -3,6 +3,7 @@ import '../styles/globals.css'
 import '../styles/auth.css'
 import '../styles/navbar.css'
 import '../styles/mainContent.css'
+import SSRProvider from "react-bootstrap/SSRProvider";
 import { ToastContainer } from "react-toastify";
 import { Fragment, useEffect } from 'react'
 import { store } from "../config/redux/store";
@@ -18,29 +19,31 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <Fragment>
-      {router.pathname !== "/profile" &&
-      router.pathname !== "/home" &&
-      router.pathname !== "/auth/signup" &&
-      router.pathname !== "/auth/login" ? (
-        <Navbar/> 
-      ) : null}
+    <SSRProvider>
+      <Fragment>
+        {router.pathname !== "/profile" &&
+          router.pathname !== "/home" &&
+          router.pathname !== "/auth/signup" &&
+          router.pathname !== "/auth/login" ? (
+          <Navbar />
+        ) : null}
 
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
-      <ToastContainer
-        position="top-right"
-        autoClose={2500}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable
-        pauseOnHover
-      />
-    </Fragment>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+        <ToastContainer
+          position="top-right"
+          autoClose={2500}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+        />
+      </Fragment>
+    </SSRProvider>
   )
 }
 
