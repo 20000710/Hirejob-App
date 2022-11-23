@@ -3,6 +3,7 @@ import '../styles/globals.css'
 import '../styles/auth.css'
 import '../styles/navbar.css'
 import '../styles/mainContent.css'
+import "react-toastify/dist/ReactToastify.css";
 import SSRProvider from "react-bootstrap/SSRProvider";
 import { ToastContainer } from "react-toastify";
 import { Fragment, useEffect } from 'react'

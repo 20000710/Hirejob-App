@@ -46,6 +46,12 @@ const Footer = () => {
         
         .footer .contact{
             width: 150px;
+        }
+
+        .footer .contact a,
+        .footer .contact a:hover
+        {
+            text-decoration: none;
             color: var(--white);
         }
     `}</style>
