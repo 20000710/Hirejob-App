@@ -11,7 +11,8 @@ import Cookies from 'js-cookie'
 
 const DetailMain = ({ worker, experience, portfolio }) => {
     console.log('worker: ', worker);
-
+    const [exp, setExp] = useState([])
+    console.log("exp: ", exp);
     const allSkills = worker.skills !== null || worker.skills !== undefined ? worker.skills?.split(",") : null
     console.log('experience: ', experience);
     console.log('portfolio: ', portfolio);
@@ -49,7 +50,6 @@ const DetailMain = ({ worker, experience, portfolio }) => {
 
             .profile-card .card-desc{
                 margin-top: 2rem;
-                margin-right: auto;
             }
 
             .location-name{
