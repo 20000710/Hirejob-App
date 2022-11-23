@@ -5,7 +5,7 @@
 #img-bg {
     flex-direction: column;
     position: relative;
-    background-image: url('../../assets/img/coding.jpg');
+    background-image: url(https://res.cloudinary.com/dk15gxtq6/image/upload/v1669173931/coding_uump2k.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
