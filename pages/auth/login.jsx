@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import peWorldImg from '../../assets/img/peworld.svg'
 import { useDispatch } from "react-redux";
 import { loginRecruiter, loginWorker } from "../../config/redux/actions/userAction";
+import styles from './auth.module.css'
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -43,34 +44,49 @@ const Login = () => {
     return (
         <main>
             <div className="row">
-                <div className="logo">
+                <div className={styles["logo"]}>
                     <Image src={peWorldImg} alt="logo icon" />
                 </div>
-                <div className="col-lg-5 a img-bg d-flex justify-content-center align-items-center">
-                    <div className="left-text">
+                <div 
+                    className="col-lg-5 d-flex justify-content-center align-items-center"
+                    id={styles["img-bg"]}
+                    >
+                    <div className={styles["left-text"]}>
                         <h1>Temukan developer berbakat & terbaik di berbagai bidang keahlian</h1>
                     </div>
-                    <div className="option-btn">
-                        <button type="button" onClick={() => handleRole("worker")} className="btn btn-primary btn-worker">Masuk sebagai pekerja</button>
-                        <div className="seperator-btn">
+                    <div className={styles["option-btn"]}>
+                        <button 
+                            type="button" 
+                            onClick={() => handleRole("worker")} 
+                            className={styles["btn-worker"]}
+                        >
+                            Masuk sebagai pekerja
+                        </button>
+                        <div className={styles["seperator-btn"]}>
                             <div></div>
                             <span>atau</span>
                             <div></div>
                         </div>
-                        <button type="button" onClick={() => handleRole("recruiter")} className="btn btn-primary btn-recruiter">Masuk sebagai perekrut</button>
+                        <button 
+                            type="button" 
+                            onClick={() => handleRole("recruiter")} 
+                            className={styles["btn-recruiter"]}
+                        >
+                            Masuk sebagai perekrut
+                        </button>
                     </div>
                 </div>
                 {/* form input  */}
                 <div className="col-lg-7 form-bg d-flex justify-content-start align-items-center">
-                    <section className="form-input">
-                        <div className="welcome">
+                    <section className={styles["form-input"]}>
+                        <div className={styles["welcome"]}>
                             <h3>Halo, Pewpeople</h3>
                             <h6 className="statement">Log in into your existing account</h6>
                         </div>
                         {/* form */}
                         <form onSubmit={handleSubmit}>
                             <div className="mail">
-                                <label htmlFor="email" className="form-label wb">
+                                <label htmlFor="email" className="form-label" id={styles["wb"]}>
                                     Email
                                 </label>
                                 <input
@@ -84,7 +100,7 @@ const Login = () => {
                                 />
                             </div>
                             <div className="psw mt-3">
-                                <label htmlFor="password" className="form-label wb">
+                                <label htmlFor="password" className="form-label" id={styles["wb"]}>
                                     Password
                                 </label>
                                 <input
@@ -97,7 +113,7 @@ const Login = () => {
                                     onChange={handleChange}
                                 />
                             </div>
-                            <div className="forgot-psw my-3 d-flex justify-content-end wb">
+                            <div className="my-3 d-flex justify-content-end wb" id={styles["forgot-psw"]}>
                                 <p>
                                     <Link href="/forgotpassword">
                                         <a>Lupa kata sandi?</a>
@@ -126,7 +142,7 @@ const Login = () => {
                                 </button>
                             )}
                         </form>
-                        <div className="sign-up d-flex justify-content-center wb">
+                        <div className={styles["sign-up"]}>
                             <p>
                                 Anda Belum punya akun?{" "}
                                 <Link href="/auth/signup" className="signup wb">

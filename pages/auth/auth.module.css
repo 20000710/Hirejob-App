@@ -2,7 +2,7 @@
     margin-left: 4rem;
 }
 
-.img-bg {
+#img-bg {
     flex-direction: column;
     position: relative;
     background-image: url('../../assets/img/coding.jpg');
@@ -11,7 +11,7 @@
     background-size: cover;
 }
 
-.img-bg::before {
+#img-bg::before {
     content: "";
     opacity: 0.7;
     position: absolute;
@@ -81,7 +81,7 @@
     color: #efc81a !important;
 }
 
-.form-label.wb {
+#wb {
     color: var(--dark-grey);
     font-weight: bold !important;
 }
@@ -102,7 +102,14 @@
     background: var(--yellow);
 }
 
+.login-here a,
+.login-here a:hover{
+    color: var(--yellow);
+}
+
 .sign-up {
+    display: flex;
+    justify-content: center;
     margin-top: 1.75rem;
 }
 
@@ -110,7 +117,12 @@
     color: var(--yellow)
 }
 
-.forgot-psw a:hover {
+#forgot-psw a {
+    text-decoration: none;
+    color: var(--dark-black)
+}
+
+#forgot-psw a:hover {
     color: var(--yellow)
 }
 
@@ -141,7 +153,7 @@
     color: var(--white);
 }
 
-.option-btn .seperator-btn {
+.seperator-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -150,19 +162,19 @@
     height: auto;
 }
 
-.option-btn .seperator-btn span {
+.seperator-btn span {
     color: var(--white);
     padding: 0 0.5rem;
 }
 
-.option-btn .seperator-btn div {
+.seperator-btn div {
     border-top: 1px solid var(--white);
     width: 42%;
 }
 
 @media screen and (max-width: 990px) {
 
-    .img-bg {
+    #img-bg {
         height: 550px;
     }
 
