@@ -12,7 +12,7 @@ export default function middleware(request = NextRequest) {
     if (cookiesToken && cookiesId) {
 
     } else {
-        if (url.includes("/profile")) {
+        if (url.includes("/profile") || url.includes("/home") || url.includes("/profile/:id")) {
             urlRedirect.pathname = "/auth/login";
             return NextResponse.redirect(urlRedirect);
         }
