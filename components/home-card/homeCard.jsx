@@ -14,7 +14,6 @@ const HomeCard = ({ search, sortby, handleSearch, allWorkers, token }) => {
     
     useEffect(() => {
         dispatch(getAllWorkers(search, sortby, token))
-        handleSearch
         const getAllSkills = (skill) => {
             const filter = skill.map(res => res?.split(","))
             setSkill(filter)
@@ -24,6 +23,7 @@ const HomeCard = ({ search, sortby, handleSearch, allWorkers, token }) => {
             return res.skills !== null || res.skills !== undefined ? res.skills : ""
         })
         getAllSkills(allSkills)
+        handleSearch
     }, [])
 
     return (
