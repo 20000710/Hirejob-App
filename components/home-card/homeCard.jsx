@@ -10,23 +10,20 @@ import { getAllWorkers } from '../../config/redux/actions/profileActions'
 const HomeCard = ({ search, sortby, handleSearch, allWorkers, token }) => {
     const dispatch = useDispatch()
     const [skill, setSkill] = useState([])
-    console.log('allSkills: ', skill);
     const { workers } = useSelector(state => state.profile)
-    console.log('allWorkers: ', allWorkers);
-    console.log('workers-search: ', workers);
-
-
-    const getAllSkills = (skill) => {
-        const filter = skill.map(res => res?.split(","))
     
-        setSkill(filter)
-    }
-
     useEffect(() => {
-        const allSkills = workers.map(res => res.skills !== null || res.skills !== undefined ? res.skills : "")
-        getAllSkills(allSkills)
         dispatch(getAllWorkers(search, sortby, token))
         handleSearch
+        const getAllSkills = (skill) => {
+            const filter = skill.map(res => res?.split(","))
+            setSkill(filter)
+        }
+
+        const allSkills = workers.map((res) => {
+            return res.skills !== null || res.skills !== undefined ? res.skills : ""
+        })
+        getAllSkills(allSkills)
     }, [])
 
     return (
@@ -150,8 +147,14 @@ const HomeCard = ({ search, sortby, handleSearch, allWorkers, token }) => {
                                         </div>
                                     </div>
                                     <div className="d-flex">
-                                        -
-                                        {/* <div className="skill-tag" key={idx}>{res[index]}</div> */}
+                                        {skill.length !== 0 || skill !== undefined  ?
+                                            skill[index]?.map((res, idx) => (
+                                                res !== "" ?
+                                                <div className="skill-tag" key={idx} >{res}</div> :
+                                                "-"
+                                                ))
+                                            : "-" 
+                                        }
                                     </div>
                                 </div>
                                 <div className="button-profile">
