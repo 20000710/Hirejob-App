@@ -105,11 +105,15 @@ Make sure that Node JS is installed on the computer.
     <td><image src="./screenshot/home.png" alt="Home Page" width=100%/></td>
   </tr>
   <tr>
-    <td>Home</td>
-    <td>Search</td>
+    <td>Landing Page</td>
+    <td>Home Page</td>
   </tr>
   <tr>
     <td><image src="./screenshot/profile.png" alt="Profile Page" width=100%/></td>
     <td><image src="./screenshot/payment.png" alt="Payment Checkout Page" width=100%></td>
+  </tr>
+  <tr>
+    <td>Profile Page</td>
+    <td>Edit Profile</td>
   </tr>
 </table>
