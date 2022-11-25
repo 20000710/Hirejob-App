@@ -3,7 +3,7 @@
 <!-- HEADER -->
 <div align="center">
   <img src="./assets/img/purple-peworld.svg" />
-  <h3 align="center">Peworld-Frontend with React.js</h3>
+  <h3 align="center">Peworld-Frontend with Next.js</h3>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -37,13 +37,13 @@
 
 ## About The Project
 
-Blanja is an e-commerce web application where users can shop for clothes of various sizes and colors at various prices.
+Peworld is is a web application for recruiters looking for workers or job seekers looking for job vacancies.
 
 ### Built With
 
 This application was developed using a framework/library
 
-- [React Js](https://reactjs.org/)
+- [NextJS](https://nextjs.org/)
 - [Javascript](https://www.javascript.com/)
 - [Axios](https://axios-http.com/)
 - [Redux](https://redux.js.org/)
@@ -64,7 +64,7 @@ Make sure that Node JS is installed on the computer.
 
 1. Clone this repo (blanja-react)
    ```sh
-   git clone https://github.com/20000710/blanja-react.git
+   git clone https://github.com/20000710/Hirejob-App.git
    ```
 2. Install NPM packages
    ```sh
@@ -72,7 +72,7 @@ Make sure that Node JS is installed on the computer.
    ```
 3. Enter your API in `.env`
    ```js
-   REACT_API_BACKEND = "ENTER YOUR API";
+   API_BACKEND = "ENTER YOUR API";
    ```
 4. Start website
 `sh npm start or yarn start`
@@ -82,7 +82,7 @@ Make sure that Node JS is installed on the computer.
 
 ## Related Project
 
-:rocket: [`blanja-backend`](https://github.com/20000710/toko.git)
+:rocket: [`hirejob-backend`](https://github.com/20000710/HireJob-App-Backend.git)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -101,19 +101,15 @@ Make sure that Node JS is installed on the computer.
     <td>Login</td>
   </tr>
   <tr>
-    <td><image src="./screenshot/landing-page.png" alt="Home Page" width=100% ></td>
-    <td><image src="./screenshot/detail-product.png" alt="detail product" width=100%/></td>
+    <td><image src="./screenshot/landing.png" alt="Landing Page" width=100% ></td>
+    <td><image src="./screenshot/home.png" alt="Home Page" width=100%/></td>
   </tr>
   <tr>
     <td>Home</td>
     <td>Search</td>
   </tr>
   <tr>
-    <td><image src="./screenshot/filter.png" alt="Filter Product" width=100%/></td>
+    <td><image src="./screenshot/profile.png" alt="Profile Page" width=100%/></td>
     <td><image src="./screenshot/payment.png" alt="Payment Checkout Page" width=100%></td>
-  </tr>
-  <tr>
-     <td>Add Receipe</td>
-     <td>Receipe Detail</td>
   </tr>
 </table>
