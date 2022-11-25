@@ -1,34 +1,119 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div id="top"></div>
+
+<!-- HEADER -->
+<div align="center">
+  <img src="./assets/img/purple-peworld.png" />
+  <h3 align="center">Peworld-Frontend with React.js</h3>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+
+## Table of Contents
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+       <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+       <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#related-project">Related Project</a></li>
+    <li><a href="#screenshoots">Screenshot</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#our-team">Our Team</a></li>
+  </ol>
+</details>
+
+<!-- ABOUT THE PROJECT -->
+
+## About The Project
+
+Blanja is an e-commerce web application where users can shop for clothes of various sizes and colors at various prices.
+
+### Built With
+
+This application was developed using a framework/library
+
+- [React Js](https://reactjs.org/)
+- [Javascript](https://www.javascript.com/)
+- [Axios](https://axios-http.com/)
+- [Redux](https://redux.js.org/)
+- [Bootstap](https://getbootstrap.com)
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Make sure that Node JS is installed on the computer.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Node.Js](https://nodejs.org/en/download/)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Installation
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+1. Clone this repo (blanja-react)
+   ```sh
+   git clone https://github.com/20000710/blanja-react.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install or yarn add
+   ```
+3. Enter your API in `.env`
+   ```js
+   REACT_API_BACKEND = "ENTER YOUR API";
+   ```
+4. Start website
+`sh npm start or yarn start`
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<!-- Related Project -->
 
-## Learn More
+## Related Project
 
-To learn more about Next.js, take a look at the following resources:
+:rocket: [`blanja-backend`](https://github.com/20000710/toko.git)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<!-- Screenshoots -->
 
-## Deploy on Vercel
+## Screenshoots
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p align="center" display=flex>
+<table>
+  <tr>
+    <td><image src="./screenshot/register.png" alt="Register Page" width=100%></td>
+    <td><image src="./screenshot/login.png" alt="Login Page" width=100%/></td>
+  </tr>
+   <tr>
+    <td>Register</td>
+    <td>Login</td>
+  </tr>
+  <tr>
+    <td><image src="./screenshot/landing-page.png" alt="Home Page" width=100% ></td>
+    <td><image src="./screenshot/detail-product.png" alt="detail product" width=100%/></td>
+  </tr>
+  <tr>
+    <td>Home</td>
+    <td>Search</td>
+  </tr>
+  <tr>
+    <td><image src="./screenshot/filter.png" alt="Filter Product" width=100%/></td>
+    <td><image src="./screenshot/payment.png" alt="Payment Checkout Page" width=100%></td>
+  </tr>
+  <tr>
+     <td>Add Receipe</td>
+     <td>Receipe Detail</td>
+  </tr>
+</table>
