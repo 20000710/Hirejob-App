@@ -2,7 +2,7 @@
 
 <!-- HEADER -->
 <div align="center">
-  <img src="./assets/img/purple-peworld.png" />
+  <img src="./assets/img/purple-peworld.svg" />
   <h3 align="center">Peworld-Frontend with React.js</h3>
 </div>
 
