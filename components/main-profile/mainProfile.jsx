@@ -91,7 +91,6 @@ const MainProfile = ({ allExp, allPorto, worker, portfolio, experiences, photo, 
 
             .profile-card .card-desc{
                 margin-top: 2rem;
-                margin-right: auto;
             }
 
             .location-name{
